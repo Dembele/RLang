@@ -49,7 +49,7 @@ cn <- function(L,W)
     return("versicolor")
 }
 
-function ()
+ShowclassMap <- function ()
 {
     dev.new(width=5, height=4)
     colors <- c("setosa" = "red", "versicolor" = "green3",
