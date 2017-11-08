@@ -44,7 +44,7 @@ knn <- function (inputData, x1, x2, k)
 #X - input dataframe
 #k - parametr passed to knn
 #returns errors quantity (natural value, not real one)
-loo.knn <- function(X, k)
+loo.knn <- function(inputData, k)
 {
   rows <- nrow(inputData)
   errCnt = 0
