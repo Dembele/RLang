@@ -84,6 +84,7 @@ printer<-function (k)
             points(j,i,pch = 22, bg = colors[knn(iris,j,i,k)], asp=1)
         }
     }
+    legend(1,4,c("setosa","versicolor","virginica"),c("setosa" = "red", "versicolor" = "green3","virginica" = "blue"))
 }
 
 presentaion <- function()
