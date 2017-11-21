@@ -1,3 +1,14 @@
+readinteger <- function()
+{ 
+  n <- readline(prompt="Enter an integer: ")
+  if(!grepl("^[0-9]+$",n))
+  {
+    return(readinteger())
+  }
+  
+  return(as.integer(n))
+}
+
 #compute distance between 2 points
 distance <- function(x1, x2)
 {

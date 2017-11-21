@@ -1,3 +1,14 @@
+readinteger <- function()
+{ 
+  n <- readline(prompt="Enter an integer: ")
+  if(!grepl("^[0-9]+$",n))
+  {
+    return(readinteger())
+  }
+  
+  return(as.integer(n))
+}
+
 #compute distance between 2 points
 distance <- function(x1, x2)
 {
@@ -55,4 +66,54 @@ loo.knn <- function(inputData, k)
       errCnt = errCnt + 1
   }
   return(errCnt)
+}
+
+#draws classMap for knn
+#k - number of neigbors
+#output - R graphics
+printer<-function (k)
+{
+    dev.new(width=5, height=4)
+    colors <- c("setosa" = "red", "versicolor" = "green3",
+                "virginica" = "blue")
+    plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col =
+             colors[iris$Species], asp = 1)
+    for (i in (seq(0,3,0.1)))
+    {
+        for (j in (seq(0,8,0.1))){
+            points(j,i,pch = 22, bg = colors[knn(iris,j,i,k)], asp=1)
+        }
+    }
+}
+
+presentaion <- function()
+{
+  cat("Specify what you want:", "\n\t 1. knn", "\n\t 2. loo for knn", "\n\t 3. draw class map")
+  answer <- readinteger()
+  if (answer == 1)
+  {
+    cat("\nspecify point's x coordiate: ")
+    x1 <- readinteger()
+    cat("\nspecify point's y coordiate: ")
+    x2 <- readinteger()
+    cat("\nspecify neigbors count: ")
+    k <- readinteger()
+    cat("\nanswer: ", knn(iris,x1,x2,k))
+    break
+  }
+  if (asnwer == 2)
+  {
+    cat("\nspecify neigbors count: ")
+    k <- readinteger()
+    cat("\nanswer: ", loo.knn(iris,k))
+    break
+  }
+  if (answer == 3)
+  {
+    cat("\nspecify neigbors count: ")
+    k <- readinteger()
+    cat("draw in progress... ")
+    printer(k)
+    cat("Done!")
+  }
 }
