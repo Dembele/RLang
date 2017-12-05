@@ -76,14 +76,16 @@ printer<-function (k)
     dev.new(width=5, height=4)
     colors <- c("setosa" = "red", "versicolor" = "green3",
                 "virginica" = "blue")
-    plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col =
-             colors[iris$Species], asp = 1)
+    plot(iris[, 3:4], pch = 22, bg = colors[iris$Species], col =
+           colors[iris$Species], asp = 1)
+    
     for (i in (seq(0,3,0.1)))
     {
         for (j in (seq(0,8,0.1))){
-            points(j,i,pch = 22, bg = colors[knn(iris,j,i,k)], asp=1)
+            points(j,i,pch = 22, col = colors[knn(iris,j,i,k)], asp=1)
         }
     }
+    
     legend(1,4,c("setosa","versicolor","virginica"),c("setosa" = "red", "versicolor" = "green3","virginica" = "blue"))
 }
 
@@ -102,7 +104,7 @@ presentaion <- function()
     cat("\nanswer: ", knn(iris,x1,x2,k))
     break
   }
-  if (asnwer == 2)
+  if (answer == 2)
   {
     cat("\nspecify neigbors count: ")
     k <- readinteger()

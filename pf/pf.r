@@ -80,3 +80,37 @@ pf.knn <- function(inputData, errCnt, h)
   print(Sys.time() - startTime)
   return(gammain)
 }
+
+#draws iris with weights
+#errCnt - max errors
+#w - window width
+#output - R graphics
+printer<-function (errCnt, w)
+{
+  colors <- c("setosa" = "red", "versicolor" = "green3",
+              "virginica" = "blue")
+  cexs <- pf.knn(iris, errCnt, w)+0.1
+  plot(iris[, 3:4], pch = 22, bg = colors[iris$Species], col =
+         colors[iris$Species], asp = 1, axes=FALSE, cex=cexs)
+  
+  legend(1,4,c("setosa","versicolor","virginica"),c("setosa" = "red", "versicolor" = "green3","virginica" = "blue"))
+  title("PF map")
+  axis(side = 1, at=c(0:8))
+  axis(side = 2, at=c(0:3))
+  box()
+}
+
+presentaion <- function()
+{
+  cat("Specify what you want:", "\n\t 1. draw iris with weight")
+  answer <- readinteger()
+  if (answer == 1)
+  {
+    errCnt <- readinteger()
+    w <- readdouble()
+    
+    cat("draw in progress... ")
+    printer(errCnt,w)
+    cat("Done!")
+  }
+}
