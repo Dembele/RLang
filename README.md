@@ -2,22 +2,18 @@
 
 ## Метрические алгоритмы
 
-### 1. [Метод ближайших соседей (k closest neigbors)](https://github.com/Dembele/RLang/tree/master/knn)
-Простейший метрический классификатор, основанный на оценивании сходства объектов. Классифицируемый объект относится к тому классу, которому принадлежат ближайшие к нему объекты обучающей выборки.
-Метод ближайшего соседа является, пожалуй, самым простым алгоритмом классификации. Классифицируемый объект x относится к тому классу y_i, которому принадлежит ближайший объект обучающей выборки x_i.
-Метод k ближайших соседей. Для повышения надёжности классификации объект относится к тому классу, которому принадлежит большинство из его соседей — k ближайших к нему объектов обучающей выборки x_i. В задачах с двумя классами число соседей берут нечётным, чтобы не возникало ситуаций неоднозначности, когда одинаковое число соседей принадлежат разным классам.
+### 1. [k-nearest neighbors algorithm](https://github.com/Dembele/RLang/tree/master/knn)
+The most easy algorithm that classifies objects depending on neighbors and gives class that prevail among others. k-NN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.
 
-![alt text](https://github.com/Dembele/RLang/blob/master/knn/knn.png?raw=true "Карта классификации для 1 соседа")
+![alt text](https://github.com/Dembele/RLang/blob/master/knn/knn.png?raw=true "4-NN")
 
-Карта классификации для 1 соседа цветов ириса по длине и ширине лепестков.
+Classification map for k=4
 
-### 2.  [Метод Парзеновского окна](https://github.com/Dembele/RLang/tree/master/pw)
-Метод байесовской классификации, основанный на непараметрическом восстановлении плотности по имеющейся выборке.
-После ввода метрики, метод парзеновского окна можно использовать, не опираясь на вероятностную природу данных.
-В основе подхода лежит идея о том, что плотность выше в тех точках, рядом с которыми находится большое количество объектов выборки.
+### 2.  [Parzen window](https://github.com/Dembele/RLang/tree/master/pw)
+The Parzen-window method (also known as Parzen-Rosenblatt window method) is a widely used non-parametric approach to estimate a density. After choosing a metric you can use PW without probabilities. The idea of the method is that density is higher at the points where are a lot of data points.
 
-![alt text](https://github.com/Dembele/RLang/blob/master/pw/PW.png?raw=true "карта классификации")
-![alt text](https://github.com/Dembele/RLang/blob/master/pw/loo.pw.png?raw=true "Зависимость количества ошибок от величины окна")
+![alt text](https://github.com/Dembele/RLang/blob/master/pw/PW.png?raw=true "class map")
+![alt text](https://github.com/Dembele/RLang/blob/master/pw/loo.pw.png?raw=true "LOO error to Width ratio")
 
 ### 3. [Метод потенциальных функций](https://github.com/Dembele/RLang/tree/master/pf)
 метрический классификатор, частный случай метода ближайших соседей. Позволяет с помощью простого алгоритма оценивать вес («важность») объектов обучающей выборки при решении задачи классификации.
@@ -49,3 +45,19 @@ Rem: все алгоритмы классификации, за исключен
 
 ![alt text](https://github.com/Dembele/RLang/blob/master/marg/margin.png?raw=true "loo для knn")
 
+### 1. [Expectation maximization (EM)](https://github.com/Dembele/RLang/tree/master/EM)
+Expectation Maximisation algorithm is an iterative method to find maximum likelihood or maximum a posteriori (MAP) estimates of parameters in statistical models, where the model depends on unobserved latent variables. The EM iteration alternates between performing an expectation (E) step, which creates a function for the expectation of the log-likelihood evaluated using the current estimate for the parameters, and a maximization (M) step, which computes parameters maximizing the expected log-likelihood found on the E step. These parameter-estimates are then used to determine the distribution of the latent variables in the next E step.
+
+![alt text](https://github.com/Dembele/RLang/blob/master/EM/init.png?raw=true "EM unclass")
+![alt text](https://github.com/Dembele/RLang/blob/master/EM/done.png?raw=true "EM class")
+
+### 1. [Support vector machine (SVM)](https://github.com/Dembele/RLang/tree/master/SVM)
+“Support Vector Machine” (SVM) is a supervised machine learning algorithm which can be used for both classification or regression challenges. However,  it is mostly used in classification problems. In this algorithm, we plot each data item as a point in n-dimensional space (where n is number of features you have) with the value of each feature being the value of a particular coordinate. Then, we perform classification by finding the hyper-plane that differentiate the two classes very well (look at the below snapshot).
+
+![alt text](https://github.com/Dembele/RLang/blob/master/SVM/linear.png?raw=true "SVM no diff")
+![alt text](https://github.com/Dembele/RLang/blob/master/SVM/linear_OK.png?raw=true "SVM with diff")
+
+And some iris classy:
+
+![alt text](https://github.com/Dembele/RLang/blob/master/SVM/iris.png?raw=true "SVM iris no diff")
+![alt text](https://github.com/Dembele/RLang/blob/master/SVM/iris_OK.png?raw=true "SVM iris with diff")
