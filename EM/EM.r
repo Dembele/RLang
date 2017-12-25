@@ -1,7 +1,7 @@
 #init step
 #just generates 2 intersecting lines with some noise
 
-set.seed(102)
+set.seed(1020)
 
 slope1 <- -.3; intercept1 <- 1.5    # generating data from C_1
 xs1 <- sample(seq(-2,2,len=201), 40)

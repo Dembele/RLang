@@ -6,7 +6,6 @@ my.data <- data.frame(x1=x1s, x2=x2s, type=as.factor(ys))
 
 plot(my.data[,-3],col=(ys+3)/2, pch=19, asp=1);
 
-library(e1071)
 svm.model <- svm(type ~ ., data=my.data, type='C-classification', kernel='linear',scale=FALSE)
 
 plot(my.data[,-3],col=(ys+3)/2, pch=19, xlim=c(-1,6), ylim=c(-1,6));
