@@ -45,13 +45,23 @@ Rem: все алгоритмы классификации, за исключен
 
 ![alt text](https://github.com/Dembele/RLang/blob/master/marg/margin.png?raw=true "loo для knn")
 
-### 1. [Expectation maximization (EM)](https://github.com/Dembele/RLang/tree/master/EM)
+### 1. [naive Bayes](https://github.com/Dembele/RLang/tree/master/naiveBayes)
+naive Bayes classifiers are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features. Naive Bayes is much faster than most of other algorithms because it doesnt iterate over parametres but calculate them once (linear time).
+here is a map of classification:
+
+![alt text](https://github.com/Dembele/RLang/blob/master/naiveBayes/naive.png?raw=true "Bayes class map")
+
+### 2. [Expectation maximization (EM)](https://github.com/Dembele/RLang/tree/master/EM)
 Expectation Maximisation algorithm is an iterative method to find maximum likelihood or maximum a posteriori (MAP) estimates of parameters in statistical models, where the model depends on unobserved latent variables. The EM iteration alternates between performing an expectation (E) step, which creates a function for the expectation of the log-likelihood evaluated using the current estimate for the parameters, and a maximization (M) step, which computes parameters maximizing the expected log-likelihood found on the E step. These parameter-estimates are then used to determine the distribution of the latent variables in the next E step.
 
 ![alt text](https://github.com/Dembele/RLang/blob/master/EM/init.png?raw=true "EM unclass")
 ![alt text](https://github.com/Dembele/RLang/blob/master/EM/done.png?raw=true "EM class")
 
-### 1. [Support vector machine (SVM)](https://github.com/Dembele/RLang/tree/master/SVM)
+### 1. [ADAptive LINear Element (ADALINE) or Adaptive Linear Neuron](https://github.com/Dembele/RLang/tree/master/ADALINE)
+Adaline is a single layer neural network with multiple nodes where each node accepts multiple inputs and generates one output.
+![alt text](https://github.com/Dembele/RLang/blob/master/ADALINE/Adaline.png?raw=true "ADALINE")
+
+### 2. [Support vector machine (SVM)](https://github.com/Dembele/RLang/tree/master/SVM)
 “Support Vector Machine” (SVM) is a supervised machine learning algorithm which can be used for both classification or regression challenges. However,  it is mostly used in classification problems. In this algorithm, we plot each data item as a point in n-dimensional space (where n is number of features you have) with the value of each feature being the value of a particular coordinate. Then, we perform classification by finding the hyper-plane that differentiate the two classes very well (look at the below snapshot).
 
 ![alt text](https://github.com/Dembele/RLang/blob/master/SVM/linear.png?raw=true "SVM no diff")
