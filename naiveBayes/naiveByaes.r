@@ -1,4 +1,4 @@
-naiveBayes <- function(xl, x, lambda, h)
+naiveBayes <- function(xl, x, h)
 {
   aprior_prob <- c()
   apost_prob <- c()
@@ -17,14 +17,14 @@ naiveBayes <- function(xl, x, lambda, h)
       apost_value <- 1
       for(i in 1:n)
       {
-        kerneRes <- 1/sqrt(2*pi)*exp(-1/2*((x[i] - sub_xl[j,i]) / h[i])^2) / h[i]
+        kerneRes <- 1/sqrt(2*pi)*exp(-1/2*((x[i] - sub_xl[j,i]) / h)^2) / h
         apost_value <- apost_value * kerneRes
       }
       sum <- sum + apost_value
     }
     apost_prob[y] <- sum / m
 
-    prob[y] <- log(lambda[y]*aprior_prob[y]) + log(apost_prob[y])
+    prob[y] <- log(aprior_prob[y]) + log(apost_prob[y])
   }
   return(levels(xl$Species)[match(max(prob), prob)])
 }
