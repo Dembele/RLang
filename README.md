@@ -1,6 +1,6 @@
 # RLang
 
-## Метрические алгоритмы
+## Classification algorithms
 
 ### 1. [k-nearest neighbors algorithm](https://github.com/Dembele/RLang/tree/master/knn)
 The most easy algorithm that classifies objects depending on neighbors and gives class that prevail among others. k-NN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.
@@ -20,7 +20,7 @@ Based on the basic property that the solution weight vector of the linear patter
 
 ![alt text](https://github.com/Dembele/RLang/blob/master/pf/PF.png?raw=true "potentials")
 
-### 4. [Алгоритм СТОЛП](https://github.com/Dembele/RLang/tree/master/stolp)
+### 4. [STOLP](https://github.com/Dembele/RLang/tree/master/stolp)
 STOLP is an algorithm from similarity-based classifier family. The idea behind all similarity-based classifiers is very simple: all similar objects lie close to each other. Most popular algorithm from this family is KNN. In this article we well develop a simple implementation of these two algorithms.
 
 ### MISC1. LOO/CV (leave-one-out cross validation)
