@@ -15,35 +15,24 @@ The Parzen-window method (also known as Parzen-Rosenblatt window method) is a wi
 ![alt text](https://github.com/Dembele/RLang/blob/master/pw/PW.png?raw=true "class map")
 ![alt text](https://github.com/Dembele/RLang/blob/master/pw/loo.pw.png?raw=true "LOO error to Width ratio")
 
-### 3. [Метод потенциальных функций](https://github.com/Dembele/RLang/tree/master/pf)
-метрический классификатор, частный случай метода ближайших соседей. Позволяет с помощью простого алгоритма оценивать вес («важность») объектов обучающей выборки при решении задачи классификации.
-Общая идея метода иллюстрируется на примере электростатического взаимодействия элементарных частиц. Известно, что потенциал («мера воздействия») электрического поля элементарной заряженной частицы в некоторой точке пространства пропорционален отношению заряда частицы к расстоянию до частицы
-Метод потенциальных функций реализует полную аналогию указанного выше примера. При классификации объект проверяется на близость к объектам из обучающей выборки. Считается, что объекты из обучающей выборки «заряжены» своим классом, а мера «важности» каждого из них при классификации зависит от его «заряда» и расстояния до классифицируемого объекта.
+### 3. [Potential function method](https://github.com/Dembele/RLang/tree/master/pf)
+Based on the basic property that the solution weight vector of the linear pattern classifier can be expressed as a linear function of the training patterns, it is shown that the increment error correction algorithm is a special case of the potential function method. For linearly separable training patterns, a form of potential function which appears to be useful is also proposed.
 
-![alt text](https://github.com/Dembele/RLang/blob/master/pf/PF.png?raw=true "потенциалы")
-
-Rem: все алгоритмы классификации, за исключением пф показали себя примерно одинаково. А пф умудрился свести все к 1 ошибке. Грешу на выборку.
+![alt text](https://github.com/Dembele/RLang/blob/master/pf/PF.png?raw=true "potentials")
 
 ### 4. [Алгоритм СТОЛП](https://github.com/Dembele/RLang/tree/master/stolp)
-алгоритм отбора эталонных объектов для метрического классификатора.
-Эталоны — это такое подмножество выборки X^l, что все объекты X^l (или их большая часть) классифицируются правильно при использовании в качестве обучающей выборки множества эталонов.
-Эталонами i-го класса при классификации методом ближайшего соседа может служить такое подмножество объектов этого класса, что расстояние от любого принадлежащего ему объекта из выборки X^l до ближайшего «своего» эталона меньше, чем до ближайшего «чужого» эталона.
-Простой перебор для отбора эталонов не эффективен. Алгоритм STOLP позволяет сократить этот перебор
+STOLP is an algorithm from similarity-based classifier family. The idea behind all similarity-based classifiers is very simple: all similar objects lie close to each other. Most popular algorithm from this family is KNN. In this article we well develop a simple implementation of these two algorithms.
 
-### MISC1. Скользящий контроль/кросс-проверка/кросс-валидация (cross-validation, CV)
-Скользящий контроль или кросс-проверка или кросс-валидация (cross-validation, CV) — процедура эмпирического оценивания обобщающей способности алгоритмов, обучаемых по прецедентам.
-Фиксируется некоторое множество разбиений исходной выборки на две подвыборки: обучающую и контрольную. Для каждого разбиения выполняется настройка алгоритма по обучающей подвыборке, затем оценивается его средняя ошибка на объектах контрольной подвыборки. Оценкой скользящего контроля называется средняя по всем разбиениям величина ошибки на контрольных подвыборках.
-Если выборка независима, то средняя ошибка скользящего контроля даёт несмещённую оценку вероятности ошибки. Это выгодно отличает её от средней ошибки на обучающей выборке, которая может оказаться смещённой (оптимистически заниженной) оценкой вероятности ошибки, что связано с явлением переобучения.
-Скользящий контроль является стандартной методикой тестирования и сравнения алгоритмов классификации, регрессии и прогнозирования.
+### MISC1. LOO/CV (leave-one-out cross validation)
+Leave one out cross validation works as follows:  the parameter optimisation is performed (automatically) on some of the given data pairs and then the performance of the tuned algorithm is tested on the data that has not been trained on.  So, in this step, the data is the test set and the other data pairs are the training data for optimising the free parameters of your algorithm.  Now, repeat the process given times, each time leaving out a different pair to use as the single test case.  You now get test performance for all data pairs.  That is the way that leave-one-out cross validation works.
 
-![alt text](https://github.com/Dembele/RLang/blob/master/knn/loo.knn.png?raw=true "loo для knn")
+![alt text](https://github.com/Dembele/RLang/blob/master/knn/loo.knn.png?raw=true "loo for knn")
 
-### MISC2. Отступ (для классификатора)
-Отступ (для классификатора) — эвристика, оценивающая то, насколько объект "погружён" в свой класс, насколько эталонным представителем он является. Чем меньше значение отступа, тем ближе объект находится к границе класса, соответственно тем выше вероятность ошибочного прогноза.
+### MISC2. Margin
+Margin is an property that shows how deep the element is within its own class. The distance is calculated reletevle to all elements. 
+If margin value is big negative number - classifier error on this element
 
-Отступ отрицателен - классификатор допускает на этом объекте ошибку.
-
-![alt text](https://github.com/Dembele/RLang/blob/master/marg/margin.png?raw=true "loo для knn")
+![alt text](https://github.com/Dembele/RLang/blob/master/marg/margin.png?raw=true "margin for irises")
 
 ### 1. [naive Bayes](https://github.com/Dembele/RLang/tree/master/naiveBayes)
 naive Bayes classifiers are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features. Naive Bayes is much faster than most of other algorithms because it doesnt iterate over parametres but calculate them once (linear time).
